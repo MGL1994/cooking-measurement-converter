@@ -1,0 +1,25 @@
+{
+  "name": "cooking-measurement-converter",
+  "version": "1.0.0",
+  "description": "App to convert cooking measurements from US to UK",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MGL1994/cooking-measurement-converter.git"
+  },
+  "author": "MGL & MLM",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MGL1994/cooking-measurement-converter/issues"
+  },
+  "homepage": "https://github.com/MGL1994/cooking-measurement-converter#readme",
+  "devDependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.3"
+  }
+}
