@@ -1,12 +1,10 @@
-const app = require("../index");
-const supertest = require("supertest");
-const request = supertest(app);
-const endpoint = "/"
+const app = require("../index")
+const supertest = require("supertest")
+const request = supertest(app)
 
+it('gets the test endpoint', async done => {
+    const response = await request.get('/')
 
-// test currently not working
-it ( "gets the index route", async done => {
-    const res = await request.get (endpoint)
-
-    expect (res.status).toBe (200)
-}); 
+    expect(response.status).toBe(200)
+    done()
+})

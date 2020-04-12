@@ -4,8 +4,8 @@
   "description": "App to convert cooking measurements from US to UK",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon",
-    "test": "jest"
+    "start": "nodemon start.js",
+    "test": "jest --detectOpenHandles --maxWorkers=1"
   },
   "repository": {
     "type": "git",
