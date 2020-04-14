@@ -1,4 +1,5 @@
 const express = require('express')
+const createError = require('http-errors')
 
 const router = express.Router()
 
@@ -16,9 +17,9 @@ router.post("/flour", (req, res) => {
     const amount = req.body.Cups
 
     if(!amount || amount <= 0) {
-        throw new Error('No amount entered!')
+        throw createError(400, 'No amount entered!')
     } else if(isNaN(amount)) {
-        throw new Error('Please enter a number')
+        throw createError(400, `'${amount}' is not a number!`)
     } else {
         res.send(flourConversion(amount))
     }
@@ -28,5 +29,10 @@ router.post("/sugar", (req, res) => {
     let amount = req.body.Cups
     res.send(sugarConversion(amount))
 })
+
+router.use((error, req, res, next) => {
+    res.status(error.status)
+    res.json({ message: error.message })
+  })
 
 module.exports = router
