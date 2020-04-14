@@ -10,11 +10,18 @@ function sugarConversion(cups) {
     return (cups * 200) + ' grams'
 }
 
-router.get("/", async (req, res) => res.send("Convert this!"))
+router.get("/", (req, res) => res.send("Convert this!"))
 
-router.post("/flour", (req, res, next) => {
-    let amount = req.body.Cups
-    res.send(flourConversion(amount))
+router.post("/flour", (req, res) => {
+    const amount = req.body.Cups
+
+    if(!amount || amount <= 0) {
+        throw new Error('No amount entered!')
+    } else if(isNaN(amount)) {
+        throw new Error('Please enter a number')
+    } else {
+        res.send(flourConversion(amount))
+    }
 })
 
 router.post("/sugar", (req, res) => {
