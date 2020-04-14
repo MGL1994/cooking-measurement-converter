@@ -26,8 +26,15 @@ router.post("/flour", (req, res) => {
 })
 
 router.post("/sugar", (req, res) => {
-    let amount = req.body.Cups
-    res.send(sugarConversion(amount))
+    const amount = req.body.Cups
+
+    if(!amount || amount <= 0) {
+        throw createError(400, 'No amount entered!')
+    } else if(isNaN(amount)) {
+        throw createError(400, `'${amount}' is not a number!`)
+    } else {
+        res.send(flourConversion(amount))
+    }
 })
 
 router.use((error, req, res, next) => {
