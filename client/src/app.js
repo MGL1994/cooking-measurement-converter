@@ -14,7 +14,7 @@ function sugarConversion(cups) {
 router.get("/", (req, res) => res.send("Convert this!"))
 
 router.post("/flour", (req, res) => {
-    const amount = req.body.Cups
+    let amount = req.body.Cups
 
     if(!amount || amount <= 0) {
         throw createError(400, 'No amount entered!')
@@ -26,20 +26,20 @@ router.post("/flour", (req, res) => {
 })
 
 router.post("/sugar", (req, res) => {
-    const amount = req.body.Cups
+    let amount = req.body.Cups
 
     if(!amount || amount <= 0) {
         throw createError(400, 'No amount entered!')
     } else if(isNaN(amount)) {
         throw createError(400, `'${amount}' is not a number!`)
     } else {
-        res.send(flourConversion(amount))
+        res.send(sugarConversion(amount))
     }
 })
 
-router.use((error, req, res, next) => {
-    res.status(error.status)
-    res.json({ message: error.message })
+router.use((err, req, res, next) => {
+    res.status(err.status)
+    res.json({ message: err.message })
   })
 
 module.exports = router
