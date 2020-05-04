@@ -19,14 +19,13 @@ function flourConversion(cups) {
 }
 
 function sugarConversion(cups) {
-
+    
     return (cups * 200) + ' grams'
 }
 
 router.get("/", (req, res) => res.send("Convert this!"))
 
 router.post("/:id", (req, res) => {
-    
     let ingredientReq = req.path.replace(/\//g, '')
     let amountReq = req.body.Cups
     let conversion = conversionSelector(ingredientReq, amountReq)
